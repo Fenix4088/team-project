@@ -1,46 +1,59 @@
-# Getting Started with Create React App
+# Info
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Store
 
-## Available Scripts
+Stor - создал стандартный, прописал типизацию для санок и диспатча.\
+Эта типизация в джэнериках принемает тип экшенов каждого из редьюсеров.\
+Таким образом будет типизации диспатча и санок уникальная для каждого из редьюсеров.\
+См. "./store/store.tsx"
 
-In the project directory, you can run:
+### Pages folder
 
-### `yarn start`
+В ней находятся папки со всеми страницами, котрые нам будут нужны для проекта
+Тоесть каждая папка содержит:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+-   компоненту страници(ключевая компонента)
+-   редьюсер для этой страници
+-   тесты для редьюсера.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Идея заключаеться в том что бы импортировать в эту компоненту, подкомпоненты которые нужны этой странице для работы.\
+Предлогаю - не загрязнять директорию страници ничем лишним.
 
-### `yarn test`
+### Components folder
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Стандартно, содержит компоненту, стили и вспомогательные компоненты.
 
-### `yarn build`
+### Router folder
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Router вынес как отдельную компонету. Пути(routes) так же вынес в отдельный модуль.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Utils
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Папка для ф-й помошников и различных утилит. Всякие универсальные штуки можно выносить туда :-)
 
-### `yarn eject`
+### API folder
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+DAL
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Assets
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Картинки и т.п.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### index.css
 
-## Learn More
+Прописал общие стили, для сброса стандартных отступов, подчеркиваний, маркировок у списков и т.д.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Prettier
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Подключил и настроил Prettier (.prettierrc) для форматирования кода, типо если забыл кавычки, точки с запятой или понаписывал слишком длинные строки.  
+Настройки можем подкоректировать, если оч. надо))
+
+#### Запуск
+
+`Ctrl + Shift + Alt + P` - локальный модуль
+
+`yarn format` - для форматирования всего проекта(Желательно перед пушем : -) )
+
+##P.S.
+Это начальный шаблон, любые штуки, которые кого-то из тимы не устраивают, предпочтения, пожелания, созвонимся все обсудим.
+Делаем так что бы всем было комфортно.
