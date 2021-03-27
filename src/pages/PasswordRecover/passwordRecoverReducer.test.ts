@@ -1,7 +1,6 @@
-import {InitialStateT} from "./profileReducer";
+import { InitialStateT } from "./passwordRecoverReducer";
 
 let startState: InitialStateT;
 beforeEach(() => {
     startState = {};
-})
-
+});

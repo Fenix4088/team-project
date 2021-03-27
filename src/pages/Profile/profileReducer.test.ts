@@ -1,7 +1,6 @@
-import {InitialStateT} from "./registrationReducer";
+import { InitialStateT } from "./profileReducer";
 
 let startState: InitialStateT;
 beforeEach(() => {
     startState = {};
-})
-
+});

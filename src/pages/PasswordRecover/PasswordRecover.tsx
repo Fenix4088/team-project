@@ -1,9 +1,9 @@
 import React from "react";
 
-export const Login = (props: any) => {
-    return(
+export const PasswordRecover = (props: any) => {
+    return (
         <>
-            <h1>Login</h1>
+            <h1>Password Recover</h1>
         </>
-    )
-}
+    );
+};

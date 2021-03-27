@@ -1,9 +1,9 @@
 import React from "react";
 
-export const NewPassword = (props: any) => {
-    return(
+export const Login = (props: any) => {
+    return (
         <>
-            <h1>New Password</h1>
+            <h1>Login</h1>
         </>
-    )
-}
+    );
+};
