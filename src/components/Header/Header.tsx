@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useReducer} from "react";
 import styled from "styled-components";
 
 const HeaderWrap = styled.div`
@@ -8,6 +8,7 @@ const HeaderWrap = styled.div`
 `;
 
 export const Header = (props: any) => {
+    useReducer()
     return (
         <HeaderWrap>
             <h1>Header</h1>
