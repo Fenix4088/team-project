@@ -1,5 +1,5 @@
 import React from "react";
-import { Router } from "../router/Router";
+import { Main } from "../components/Main/Main";
 import { Header } from "../components/Header/Header";
 import { Navigation } from "../components/Navigation/Navigation";
 import styled from "styled-components";
@@ -10,7 +10,7 @@ function App() {
             <MainWrapper>
                 <Header />
                 <Navigation />
-                <Router />
+                <Main />
             </MainWrapper>
         </div>
     );

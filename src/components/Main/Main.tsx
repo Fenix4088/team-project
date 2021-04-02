@@ -1,22 +1,23 @@
 import React from "react";
 import styled from "styled-components";
 import { Switch, Route } from "react-router-dom";
-import { routes } from "./routes";
-import { Profile } from "../pages/Profile/Profile";
-import { Login } from "../pages/Login/Login";
-import { Registration } from "../pages/Registration/Registration";
-import { PasswordRecover } from "../pages/PasswordRecover/PasswordRecover";
-import { NewPassword } from "../pages/NewPassword/NewPassword";
-import { PresentationPage } from "../pages/PresenatationPage/PresentationPage";
-import { NotFound } from "../pages/404/404";
+import { routes } from "../../router/routes";
+import { Profile } from "../../pages/Profile/Profile";
+import { Login } from "../../pages/Login/Login";
+import { Registration } from "../../pages/Registration/Registration";
+import { PasswordRecover } from "../../pages/PasswordRecover/PasswordRecover";
+import { NewPassword } from "../../pages/NewPassword/NewPassword";
+import { PresentationPage } from "../../pages/PresenatationPage/PresentationPage";
+import { NotFound } from "../../pages/404/404";
 
 const MainContentWrap = styled.div`
+    padding: 25px 15px;
     grid-area: content;
     width: 100%;
     height: 100%;
 `;
 
-export const Router = () => {
+export const Main = () => {
     return (
         <MainContentWrap>
             <Switch>
