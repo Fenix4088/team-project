@@ -3,7 +3,7 @@ import {SliderDataType} from "./ImageSliderDemo";
 import {SvgArrowLeft} from "./SvgArrowLeft";
 import {SvgArrowRight} from "./SvgArrowRight";
 import styled, {StyledComponentProps} from "styled-components/macro";
-import {ThemeType} from "../../../../../react-styled-component-library/src/styles/theme";
+import {ThemeType} from "../../../styles/theme";
 
 
 // Component

@@ -11,7 +11,6 @@ import { GlobalStyles } from "./styles/GlobalStyles";
 
 ReactDOM.render(
     <React.StrictMode>
-
         <Provider store={store}>
             <ThemeProvider theme={theme}>
                 <GlobalStyles/>

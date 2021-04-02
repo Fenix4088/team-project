@@ -1,9 +1,8 @@
 import React from "react";
 
-export const PresentationPage = (props: any) => {
+export const PresentationPage = () => {
     return (
         <>
-            <h1>PresentationPage</h1>
         </>
     );
 };

@@ -14,10 +14,9 @@ const MainContentWrap = styled.div`
     grid-area: content;
     width: 100%;
     height: 100%;
-    background-color: red;
 `;
 
-export const Router = (props: any) => {
+export const Router = () => {
     return (
         <MainContentWrap>
             <Switch>

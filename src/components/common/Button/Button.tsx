@@ -1,6 +1,6 @@
 import React, {ButtonHTMLAttributes, DetailedHTMLProps} from "react";
 import styled, {StyledComponentProps} from "styled-components/macro";
-import {ThemeType} from "../../../../../react-styled-component-library/src/styles/theme";
+import { ThemeType } from "../../../styles/theme";
 
 // тип пропсов обычной кнопки
 type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
