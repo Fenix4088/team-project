@@ -41,7 +41,7 @@ export const InputText: React.FC<SuperInputTextPropsType> = ({
     return (
         <InputTextWrapper>
             <StyledInput
-                type={"text"}
+                type={type}
                 onChange={onChangeCallback}
                 onKeyPress={onKeyPressCallback}
                 {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
