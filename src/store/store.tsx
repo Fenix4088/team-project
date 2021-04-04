@@ -1,22 +1,23 @@
-import { createStore, combineReducers, Action, applyMiddleware } from "redux";
-import thunk, { ThunkAction, ThunkDispatch } from "redux-thunk";
-import {loginReducer} from "../pages/Login/loginReducer";
-import {newPasswordReducer} from "../pages/NewPassword/newPasswordReducer";
-import {passwordRecoverReducer} from "../pages/PasswordRecover/passwordRecoverReducer";
-import {profileReducer} from "../pages/Profile/profileReducer";
-import {registrationReducer} from "../pages/Registration/registrationReducer";
-import {composeWithDevTools} from "redux-devtools-extension";
+import { combineReducers, Action } from "redux";
+import thunk, { ThunkAction } from "redux-thunk";
+import { loginReducer } from "../pages/Login/loginReducer";
+import { newPasswordReducer } from "../pages/NewPassword/newPasswordReducer";
+import { passwordRecoverReducer } from "../pages/PasswordRecover/passwordRecoverReducer";
+import { profileReducer } from "../pages/Profile/profileReducer";
+import { registrationReducer } from "../pages/Registration/registrationReducer";
+import { configureStore } from "@reduxjs/toolkit";
+import {appReducer} from "../App/AppReducer";
 
 export type AppRootStateT = ReturnType<typeof rootReducer>;
 /*
- * A in AppThunkT and AppDispatchT is a action or actions what you want to use
+ * In a AppThunkT  is a action or actions what you want to use
  * Each reducer has it own actions
  * */
 export type AppThunkT<A extends Action> = ThunkAction<void, AppRootStateT, unknown, A>;
-
-export type AppDispatchT<A extends Action, E = any> = ThunkDispatch<AppRootStateT, E, A>;
+export type AppDispatchT = typeof store.dispatch;
 
 const rootReducer = combineReducers({
+    app: appReducer,
     login: loginReducer,
     newPassword: newPasswordReducer,
     passwordRecover: passwordRecoverReducer,
@@ -24,4 +25,7 @@ const rootReducer = combineReducers({
     registration: registrationReducer
 });
 
-export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+export const store = configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().prepend(thunk)
+});
