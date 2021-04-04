@@ -1,5 +1,4 @@
 import React from "react";
-// import { useFormik } from 'formik';
 import { InputText } from "../../components/common/InputText/InputText";
 import { NavLink } from "react-router-dom";
 import { routes } from "../../router/routes";
@@ -7,7 +6,7 @@ import { Button } from "../../components/common/Button/Button";
 import { Checkbox } from "../../components/common/Checkbox/Checkbox";
 import styled from "styled-components/macro";
 import { useFormik } from "formik";
-
+// yehorTest@gmail.com
 type LoginFormValT = {
     email: string;
     password: string;
