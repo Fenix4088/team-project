@@ -17,7 +17,7 @@
         "@types/redux": "^3.6.0",
         "@types/styled-components": "^5.1.9",
         "axios": "^0.21.1",
-        "formic": "^0.0.10",
+        "formik": "^2.2.6",
         "polished": "^4.1.1",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
