@@ -23,9 +23,8 @@ export const Select: React.FC<SuperSelectPropsType> = (
 
     const mappedOptions: any[] | undefined = options ? options.map(option => {
         return (
-            <>
-                <StyledInput key={option}
-                             onChange={onChangeCallback}
+            <React.Fragment key={option}>
+                <StyledInput onChange={onChangeCallback}
                              name="test" type="radio"
                              id={option}
                              value={option}
@@ -33,7 +32,7 @@ export const Select: React.FC<SuperSelectPropsType> = (
                              {...restProps}
                 />
                 <Option className={"option"} htmlFor={option}>{option}</Option>
-            </>
+            </React.Fragment>
         )
     }) : undefined;
 

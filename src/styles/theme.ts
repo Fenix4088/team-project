@@ -3,8 +3,8 @@ import {keyframes} from "styled-components/macro";
 
 export type ThemeType = typeof theme;
 
-const primaryColor = '#ed6e6e'
-const secondaryColor = '#edba6e'
+const primaryColor = '#4579db'
+const secondaryColor = '#dbb145'
 
 export const theme = {
     variable: {
@@ -34,7 +34,7 @@ export const theme = {
         },
         black: '#1a1a1a',
         white: '#e9e9e9',
-        error: '#cf1313',
+        error: '#db4545',
     },
     font: {
         source: `https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap`,

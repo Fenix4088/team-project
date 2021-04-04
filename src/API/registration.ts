@@ -1,1 +1,1 @@
-export const regestrationApi = {};
+export const registrationApi = {};
