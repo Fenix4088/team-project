@@ -1,4 +1,5 @@
 import React from "react";
+// import { useFormik } from 'formik';
 import {InputText} from "../../components/common/InputText/InputText";
 import {NavLink} from "react-router-dom";
 import {routes} from "../../router/routes";
@@ -7,6 +8,15 @@ import {Checkbox} from "../../components/common/Checkbox/Checkbox";
 import styled from "styled-components/macro";
 
 export const Login = () => {
+    // const formik = useFormik({
+    //     initialValues: {
+    //         email: '',
+    //     },
+    //     onSubmit: values => {
+    //         alert(JSON.stringify(values, null, 2));
+    //     },
+    // });
+
     return (
         <>
             <div>
