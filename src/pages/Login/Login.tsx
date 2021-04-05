@@ -1,20 +1,26 @@
 import React from "react";
-import { InputText } from "../../components/common/InputText/InputText";
-import { NavLink } from "react-router-dom";
-import { routes } from "../../router/routes";
-import { Button } from "../../components/common/Button/Button";
-import { Checkbox } from "../../components/common/Checkbox/Checkbox";
+import {InputText} from "../../components/common/InputText/InputText";
+import { NavLink, Redirect } from "react-router-dom";
+import {routes} from "../../router/routes";
+import {Button} from "../../components/common/Button/Button";
+import {Checkbox} from "../../components/common/Checkbox/Checkbox";
 import styled from "styled-components/macro";
-import { useFormik } from "formik";
+import {useFormik} from "formik";
+import {useAppDispatch, useAppSelector} from "../../store/hooks";
+import {loginization} from "./loginReducer";
 // yehorTest@gmail.com
-type LoginFormValT = {
+export type LoginFormT = {
     email: string;
     password: string;
 };
 
 export const Login = () => {
-    const validate = (values: LoginFormValT) => {
-        const errors: LoginFormValT = {} as LoginFormValT;
+    const isLoggedIn = useAppSelector((state) => state.login.isLoggedIn)
+
+    const dispatch = useAppDispatch();
+
+    const validate = (values: LoginFormT) => {
+        const errors: LoginFormT = {} as LoginFormT;
         if (!values.password) {
             errors.password = "Required";
         } else if (values.password.length < 5) {
@@ -40,13 +46,17 @@ export const Login = () => {
         },
         validate,
         onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2));
+            dispatch(loginization(values))
         }
     });
 
     const inputValidation = (fieldType: "password" | "email"): string => {
         return formik.touched[fieldType] && formik.errors[fieldType] ? `${formik.errors[fieldType]}` : "";
     };
+
+    if(isLoggedIn) {
+        return <Redirect to={routes.profile}/>
+    }
 
     return (
         <>
