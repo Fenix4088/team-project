@@ -4,6 +4,7 @@ import { loginApi } from "../../API/login";
 
 export type InitialStateT = {
     isLoggedIn: boolean;
+    isFormPending: boolean;
     loginError?: string;
 };
 
@@ -36,6 +37,7 @@ export const loginization = createAsyncThunk<{userData: UserDataT}, LoginFormT, 
 
 export const initialState: InitialStateT = {
     isLoggedIn: false,
+    isFormPending: true,
     loginError: ""
 };
 

@@ -1,13 +1,13 @@
 import React from "react";
-import {InputText} from "../../components/common/InputText/InputText";
+import { InputText } from "../../components/common/InputText/InputText";
 import { NavLink, Redirect } from "react-router-dom";
-import {routes} from "../../router/routes";
-import {Button} from "../../components/common/Button/Button";
-import {Checkbox} from "../../components/common/Checkbox/Checkbox";
+import { routes } from "../../router/routes";
+import { Button } from "../../components/common/Button/Button";
+import { Checkbox } from "../../components/common/Checkbox/Checkbox";
 import styled from "styled-components/macro";
-import {useFormik} from "formik";
-import {useAppDispatch, useAppSelector} from "../../store/hooks";
-import {loginization} from "./loginReducer";
+import { useFormik } from "formik";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { loginization } from "./loginReducer";
 // yehorTest@gmail.com
 export type LoginFormT = {
     email: string;
@@ -15,8 +15,9 @@ export type LoginFormT = {
 };
 
 export const Login = () => {
-    const isLoggedIn = useAppSelector((state) => state.login.isLoggedIn)
-    const loginError = useAppSelector((state) => state.login.loginError)
+    const isLoggedIn = useAppSelector((state) => state.login.isLoggedIn);
+    const loginError = useAppSelector((state) => state.login.loginError);
+    const isFormPending = useAppSelector((state) => state.login.isFormPending);
 
     const dispatch = useAppDispatch();
 
@@ -47,7 +48,7 @@ export const Login = () => {
         },
         validate,
         onSubmit: (values) => {
-            dispatch(loginization(values))
+            dispatch(loginization(values));
         }
     });
 
@@ -55,14 +56,15 @@ export const Login = () => {
         return formik.touched[fieldType] && formik.errors[fieldType] ? `${formik.errors[fieldType]}` : "";
     };
 
-    if(isLoggedIn) {
-        return <Redirect to={routes.profile}/>
+    if (isLoggedIn) {
+        return <Redirect to={routes.profile} />;
     }
 
     return (
         <>
             <div>
                 <FormStyle onSubmit={formik.handleSubmit}>
+                    {isFormPending && <Overlay><span>Loading...</span></Overlay>}
                     <span>Sing in</span>
 
                     <InputText
@@ -104,6 +106,7 @@ const FormStyle = styled.form`
     width: 50%;
     min-width: 300px;
 
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -112,3 +115,19 @@ const FormStyle = styled.form`
     border: 1px solid red;
 `;
 
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #267fd457;
+  backdrop-filter: blur(5px);
+  z-index: 10;
+    & > span {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -100%);
+    }
+`;
