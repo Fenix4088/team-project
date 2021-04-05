@@ -1,11 +1,19 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { Button } from "../common/Button/Button";
+import {useAppDispatch} from "../../store/hooks";
+import {logout} from "../../pages/Login/loginReducer";
 
 export const Header = () => {
+    const dispatch = useAppDispatch();
+
+    const onLogOutBtnClick = () => {
+        dispatch(logout())
+    }
+
     return (
         <HeaderWrap>
-            <Button>Logout</Button>
+            <Button onClick={onLogOutBtnClick}>Logout</Button>
         </HeaderWrap>
     );
 };

@@ -7,7 +7,7 @@ import { Checkbox } from "../../components/common/Checkbox/Checkbox";
 import styled from "styled-components/macro";
 import { useFormik } from "formik";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { loginization } from "./loginReducer";
+import { login } from "./loginReducer";
 // yehorTest@gmail.com
 export type LoginFormT = {
     email: string;
@@ -48,7 +48,7 @@ export const Login = () => {
         },
         validate,
         onSubmit: (values) => {
-            dispatch(loginization(values));
+            dispatch(login(values));
         }
     });
 
