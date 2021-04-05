@@ -1,19 +1,28 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { Button } from "../common/Button/Button";
-import {useAppDispatch} from "../../store/hooks";
-import {logout} from "../../pages/Login/loginReducer";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { logout } from "../../pages/Login/loginReducer";
+import { routes } from "../../router/routes";
+import { NavLink } from "react-router-dom";
 
 export const Header = () => {
+    const isLoggedIn = useAppSelector((state) => state.login.isLoggedIn);
     const dispatch = useAppDispatch();
 
     const onLogOutBtnClick = () => {
-        dispatch(logout())
-    }
+        dispatch(logout());
+    };
 
     return (
         <HeaderWrap>
-            <Button onClick={onLogOutBtnClick}>Logout</Button>
+            {isLoggedIn ? (
+                <Button onClick={onLogOutBtnClick}>Logout</Button>
+            ) : (
+                <NavLink to={routes.login}>
+                    <Button onClick={onLogOutBtnClick}>Login</Button>
+                </NavLink>
+            )}
         </HeaderWrap>
     );
 };
@@ -26,7 +35,10 @@ const HeaderWrap = styled.div`
     grid-template-columns: 10fr 1fr;
     background-color: #0000ff91;
     & Button {
-      grid-column-start: 2
+      width: 100%;
+    }
+    & Button,
+    a {
+        grid-column-start: 2;
     }
 `;
-

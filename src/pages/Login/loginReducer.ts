@@ -21,12 +21,6 @@ type UserDataT = {
     verified: boolean;
 };
 
-type LogOutReturnT = {
-    data: {
-        info: string
-    }
-}
-
 // * Thunks
 
 export const login = createAsyncThunk<{userData: UserDataT}, LoginFormT, {rejectValue: {errorMessage: string}}>("login/login", async (formVal: LoginFormT, thunkAPI) => {
@@ -71,13 +65,13 @@ const loginSlice = createSlice({
             state.isFormPending = false;
             state.loginError = action.payload?.errorMessage;
         })
-        builder.addCase(login.pending, (state, action) => {
+        builder.addCase(login.pending, (state) => {
             state.isFormPending = true;
         })
-        builder.addCase(logout.fulfilled, (state, action) => {
+        builder.addCase(logout.fulfilled, (state) => {
             state.isLoggedIn = false;
         })
-        builder.addCase(logout.rejected, (state, action) => {
+        builder.addCase(logout.rejected, (state) => {
             //TODO: Не понятно как обрабатывать этот catch так как пользователь если залогинен, кнопка скрыта
             state.isFormPending = false;
         })
