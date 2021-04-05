@@ -1,7 +1,5 @@
-import {instance} from "./commonAPIData";
-import {LoginFormT} from "../pages/Login/Login";
-
-
+import { instance } from "./commonAPIData";
+import { LoginFormT } from "../pages/Login/Login";
 
 export const loginApi = {
     async login(loginData: LoginFormT) {

@@ -64,7 +64,11 @@ export const Login = () => {
         <>
             <div>
                 <FormStyle onSubmit={formik.handleSubmit}>
-                    {isFormPending && <Overlay><span>Loading...</span></Overlay>}
+                    {isFormPending && (
+                        <Overlay>
+                            <span>Loading...</span>
+                        </Overlay>
+                    )}
                     <span>Sing in</span>
 
                     <InputText
@@ -116,18 +120,19 @@ const FormStyle = styled.form`
 `;
 
 const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #267fd457;
-  backdrop-filter: blur(5px);
-  z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #267fd457;
+    backdrop-filter: blur(5px);
+    z-index: 10;
+
     & > span {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -100%);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -100%);
     }
 `;

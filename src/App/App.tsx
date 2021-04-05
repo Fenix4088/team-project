@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Main } from "../components/Main/Main";
 import { Header } from "../components/Header/Header";
 import { Navigation } from "../components/Navigation/Navigation";
 import styled from "styled-components";
-import {useAppSelector} from "../store/hooks";
-import {Redirect} from "react-router-dom";
-import {routes} from "../router/routes";
+import { useAppDispatch } from "../store/hooks";
+import { authMe } from "./AppReducer";
 
 function App() {
-    const isLoggedIn = useAppSelector((state) => state.login.isLoggedIn);
-    // if(!isLoggedIn) return <Redirect to={routes.login}/>
+    const dispatch = useAppDispatch();
 
+    useEffect(() => {
+        dispatch(authMe());
+    }, [dispatch]);
 
     return (
         <div>

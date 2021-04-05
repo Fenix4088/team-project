@@ -34,9 +34,11 @@ const HeaderWrap = styled.div`
     display: grid;
     grid-template-columns: 10fr 1fr;
     background-color: #0000ff91;
+
     & Button {
-      width: 100%;
+        width: 100%;
     }
+
     & Button,
     a {
         grid-column-start: 2;

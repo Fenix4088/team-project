@@ -31,9 +31,11 @@ const LinksList = styled.div`
     align-items: flex-start;
     justify-content: flex-end;
     flex-flow: column nowrap;
+
     a {
         margin-bottom: 10px;
         color: blue;
+
         &:last-child {
             margin-bottom: 0;
         }

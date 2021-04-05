@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Switch, Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { routes } from "../../router/routes";
 import { Profile } from "../../pages/Profile/Profile";
 import { Login } from "../../pages/Login/Login";
