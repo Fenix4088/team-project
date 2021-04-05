@@ -1,16 +1,17 @@
 import React from "react";
-import { Router } from "../router/Router";
+import { Main } from "../components/Main/Main";
 import { Header } from "../components/Header/Header";
 import { Navigation } from "../components/Navigation/Navigation";
 import styled from "styled-components";
 
 function App() {
+
     return (
         <div>
             <MainWrapper>
                 <Header />
                 <Navigation />
-                <Router />
+                <Main />
             </MainWrapper>
         </div>
     );
@@ -27,4 +28,4 @@ const MainWrapper = styled.div`
         "header header header header"
         "navigation content content content"
         "navigation content content content";
-`
+`;

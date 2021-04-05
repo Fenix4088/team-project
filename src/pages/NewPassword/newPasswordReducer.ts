@@ -1,20 +1,18 @@
-import { AppDispatchT, AppThunkT } from "../../store/store";
-
-type ActionT = any;
-type NewPasswordThunkT = AppThunkT<ActionT>;
-type NewPasswordDispatchT = AppDispatchT<ActionT>;
+import { createSlice } from "@reduxjs/toolkit";
 
 export type InitialStateT = any;
 
 export const initialState: InitialStateT = {};
 
-export const newPasswordReducer = (state: InitialStateT = initialState, action: ActionT): InitialStateT => {
-    switch (action.type) {
-        default:
-            return state;
-    }
-};
+const newPassSlice = createSlice({
+    name: "newPassword",
+    initialState,
+    reducers: {}
+});
+
+export const newPasswordReducer = newPassSlice.reducer;
 
 // * Action creators
+export const {} = newPassSlice.actions;
 
 // * Thunks Creators

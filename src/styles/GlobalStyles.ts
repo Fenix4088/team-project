@@ -1,9 +1,9 @@
-import {createGlobalStyle} from "styled-components/macro";
-import {ThemeType} from "./theme";
+import { createGlobalStyle } from "styled-components/macro";
+import { ThemeType } from "./theme";
 
-export const GlobalStyles = createGlobalStyle<{ theme: ThemeType}>`
+export const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
   // Import the font link into the project
-  @import url('${({theme}) => theme.font.source}');
+  @import url('${({ theme }) => theme.font.source}');
 
   *,
   *::after,
@@ -35,7 +35,7 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeType}>`
   }
 
   body {
-    font-family: ${({theme}) => theme.font.family.default}; // Make a default font actually default
+    font-family: ${({ theme }) => theme.font.family.default}; // Make a default font actually default
     font-weight: 500;
     color: #000;
   }
@@ -67,4 +67,4 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeType}>`
   textarea {
     resize: none;
   }
-`
+`;

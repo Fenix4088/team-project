@@ -25,7 +25,7 @@ const NavigationWrap = styled.div`
     width: 100%;
     height: 100vh;
     background-color: #ff9800;
-`
+`;
 
 const LinksList = styled.div`
     display: flex;
@@ -39,4 +39,4 @@ const LinksList = styled.div`
             margin-bottom: 0;
         }
     }
-`
+`;

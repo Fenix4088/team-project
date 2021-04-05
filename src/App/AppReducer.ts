@@ -1,19 +1,24 @@
-import { AppDispatchT, AppThunkT } from "../store/store";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
-type ActionT = any;
-type ApplicationThunkT = AppThunkT<ActionT>;
-type ApplicationDispatchT = AppDispatchT<ActionT>;
 export type InitialStateT = any;
 
-export const initialState: InitialStateT = {};
-
-export const appReducer = (state: InitialStateT = initialState, action: ActionT): InitialStateT => {
-    switch (action.type) {
-        default:
-            return state;
-    }
+export const initialState: InitialStateT = {
+    isTest: false
 };
 
-// * Action creators
+const appSlice = createSlice({
+    name: "app",
+    initialState,
+    reducers: {
+        testApp(state, action: PayloadAction<{isTest: boolean}>) {
+            state.isTest = action.payload.isTest;
+        }
+    }
+});
 
-// * Thunks Creators
+export const appReducer = appSlice.reducer;
+
+// * Actions
+export const {testApp} = appSlice.actions;
+
+// * Thunks
