@@ -1,17 +1,24 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { Button } from "../common/Button/Button";
 
-export const Header = (props: any) => {
+export const Header = () => {
     return (
         <HeaderWrap>
-            <h1>Header</h1>
+            <Button>Logout</Button>
         </HeaderWrap>
     );
 };
 
 // Styles
 const HeaderWrap = styled.div`
+    padding: 15px;
     grid-area: header;
-    width: 100%;
+    display: grid;
+    grid-template-columns: 10fr 1fr;
     background-color: #0000ff91;
+    & Button {
+      grid-column-start: 2
+    }
 `;
+
