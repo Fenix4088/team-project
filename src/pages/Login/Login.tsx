@@ -16,6 +16,7 @@ export type LoginFormT = {
 
 export const Login = () => {
     const isLoggedIn = useAppSelector((state) => state.login.isLoggedIn)
+    const loginError = useAppSelector((state) => state.login.loginError)
 
     const dispatch = useAppDispatch();
 
@@ -91,6 +92,7 @@ export const Login = () => {
                     <Button type={"submit"}>Sing in</Button>
                     <NavLink to={routes.registration}>Registration</NavLink>
                 </FormStyle>
+                {loginError && <div>{loginError}</div>}
             </div>
         </>
     );
