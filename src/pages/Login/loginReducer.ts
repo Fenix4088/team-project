@@ -60,7 +60,8 @@ const loginSlice = createSlice({
             state.isLoggedIn = true;
             state.isFormPending = false;
             state.loginError = "";
-            console.log(action.payload);
+            //* user data for future using
+            console.log("If loggedin userdata", action.payload);
         });
         builder.addCase(login.rejected, (state, action) => {
             state.isLoggedIn = false;
@@ -78,10 +79,11 @@ const loginSlice = createSlice({
             state.isFormPending = false;
         });
         builder.addCase(authMe.fulfilled, (state, action) => {
+            //* user data for future using
+            console.log("If auth user data: ", action.payload)
             state.isLoggedIn = true;
         });
         builder.addCase(authMe.rejected, (state, action) => {
-            console.log("Not auth");
             state.isLoggedIn = false;
         });
     }
