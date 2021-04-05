@@ -36,6 +36,7 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
 
   body {
     font-family: ${({ theme }) => theme.font.family.default}; // Make a default font actually default
+    font-size: ${({ theme }) => theme.font.size.default}; // Default font size
     font-weight: 500;
     color: #000;
   }

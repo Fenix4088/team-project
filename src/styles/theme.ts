@@ -1,5 +1,4 @@
-import {darken, lighten} from "polished";
-import {keyframes} from "styled-components/macro";
+import { darken, lighten } from "polished";
 
 export type ThemeType = typeof theme;
 

@@ -13,13 +13,16 @@ export const Button: React.FC<PropsType> = ({ ...restProps }) => {
 
 // Styles
 const StyledButton = styled.button<StyledComponentProps<any, ThemeType, any, any>>`
-    border: none;
-    cursor: pointer;
-    background-color: ${({ theme }) => theme.color.primary.main};
-    color: ${({ theme }) => theme.color.white};
-    padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  background-color: ${({ theme }) => theme.color.primary.main};
+  color: ${({ theme }) => theme.color.white};
+  padding: 0.5rem 1rem;
 
-    &:hover {
-        background-color: ${({ theme }) => theme.color.primary.light};
-    }
+  font-family: ${({ theme }) => theme.font.family.default}; // Make a default font actually default
+  font-size: ${({ theme }) => theme.font.size.default}; // Default font size
+
+  &:hover {
+    background-color: ${({ theme }) => theme.color.primary.light};
+  }
 `;
