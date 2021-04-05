@@ -37,7 +37,7 @@ export const loginization = createAsyncThunk<{userData: UserDataT}, LoginFormT, 
 
 export const initialState: InitialStateT = {
     isLoggedIn: false,
-    isFormPending: true,
+    isFormPending: false,
     loginError: ""
 };
 
@@ -48,12 +48,17 @@ const loginSlice = createSlice({
     extraReducers: builder => {
         builder.addCase(loginization.fulfilled, (state, action) => {
             state.isLoggedIn = true;
+            state.isFormPending = false;
             state.loginError = "";
             console.log(action.payload)
         })
         builder.addCase(loginization.rejected, (state, action) => {
             state.isLoggedIn = false;
+            state.isFormPending = false;
             state.loginError = action.payload?.errorMessage;
+        })
+        builder.addCase(loginization.pending, (state, action) => {
+            state.isFormPending = true;
         })
     }
 });
