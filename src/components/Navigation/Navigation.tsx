@@ -9,7 +9,6 @@ export const Navigation = (props: any) => {
             <h1>Navigation</h1>
             <LinksList>
                 <NavLink to={routes.profile}>Profile</NavLink>
-                <NavLink to={routes.login}>Login</NavLink>
                 <NavLink to={routes.registration}>Registration</NavLink>
                 <NavLink to={routes.passwordRecover}>Password Recover</NavLink>
                 <NavLink to={routes.newPassword}>New Password</NavLink>
@@ -32,9 +31,11 @@ const LinksList = styled.div`
     align-items: flex-start;
     justify-content: flex-end;
     flex-flow: column nowrap;
+
     a {
         margin-bottom: 10px;
         color: blue;
+
         &:last-child {
             margin-bottom: 0;
         }

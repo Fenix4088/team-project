@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Main } from "../components/Main/Main";
 import { Header } from "../components/Header/Header";
 import { Navigation } from "../components/Navigation/Navigation";
 import styled from "styled-components";
+import { useAppDispatch } from "../store/hooks";
+import { authMe } from "./AppReducer";
 
 function App() {
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(authMe());
+    }, [dispatch]);
 
     return (
         <div>

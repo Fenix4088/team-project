@@ -1,24 +1,33 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { appAPI } from "../API/appApi";
+import { UserDataT } from "../pages/Login/loginReducer";
 
 export type InitialStateT = any;
 
-export const initialState: InitialStateT = {
-    isTest: false
-};
+//* Thunks
+export const authMe = createAsyncThunk<{ userData: UserDataT }, void, { rejectValue: string }>(
+    "app/me",
+    async (_, thunkAPI) => {
+        try {
+            const res = await appAPI.me();
+            return { userData: res.data };
+        } catch (err) {
+            return thunkAPI.rejectWithValue(err.response.data.error);
+        }
+    }
+);
+
+export const initialState: InitialStateT = {};
 
 const appSlice = createSlice({
     name: "app",
     initialState,
-    reducers: {
-        testApp(state, action: PayloadAction<{isTest: boolean}>) {
-            state.isTest = action.payload.isTest;
-        }
-    }
+    reducers: {}
 });
 
 export const appReducer = appSlice.reducer;
 
 // * Actions
-export const {testApp} = appSlice.actions;
+export const {} = appSlice.actions;
 
 // * Thunks
