@@ -1,17 +1,18 @@
 import { InputText } from "../../components/common/InputText/InputText";
 import { Button } from "../../components/common/Button/Button";
 import React from "react";
-import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import styled from "styled-components/macro";
+import { useAppDispatch } from "../../store/hooks";
+import { recover } from "./passwordRecoverReducer";
 
 export const PasswordRecoverForm: React.FC = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const formik = useFormik({
 
-        validate: (values) => {
-            const errors: FormikErrorType = {};
+        validate: (values: FormValueT) => {
+            const errors: FormValueT = {} as FormValueT;
             if (!values.email) {
                 errors.email = "Email is required";
             } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
@@ -23,7 +24,7 @@ export const PasswordRecoverForm: React.FC = () => {
             email: ""
         },
         onSubmit: values => {
-            // dispatch(recover(values))
+            dispatch(recover(values));
         }
     });
 
@@ -45,6 +46,6 @@ const StyledForm = styled.form`
 `;
 
 // Types
-type FormikErrorType = {
-    email?: string
+export type FormValueT = {
+    email: string
 }
