@@ -1,8 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export type InitialStateT = any;
+type userDataT = {
+    avatar?: string
+    created: string
+    email: string
+    isAdmin: boolean
+    name: string
+    publicCardPacksCount: number
+    rememberMe: boolean
+    token: string
+    tokenDeathTime: number
+    updated: string
+    verified: boolean
+}
 
-export const initialState: InitialStateT = {};
+export type InitialStateT = {
+    userData: userDataT;
+};
+
+export const initialState: InitialStateT = {
+    userData: {} as userDataT,
+};
 
 const profileSlice = createSlice({
     name: "profile",
