@@ -27,7 +27,7 @@ export type UserDataT = {
 
 export const login = createAsyncThunk<void, LoginFormT, { rejectValue: { errorMessage: string } }>(
     "login/login",
-    async (formVal: LoginFormT, thunkAPI) => {
+    async (formVal, thunkAPI) => {
         const { rejectWithValue, dispatch } = thunkAPI;
         try {
             const res = await loginApi.login(formVal);
