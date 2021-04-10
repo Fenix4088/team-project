@@ -24,13 +24,13 @@ export type UserDataT = {
 
 // * Thunks
 
-export const login = createAsyncThunk<{ userData: UserDataT }, LoginFormT, { rejectValue: { errorMessage: string } }>(
+export const login = createAsyncThunk<void, LoginFormT, { rejectValue: { errorMessage: string } }>(
     "login/login",
     async (formVal: LoginFormT, thunkAPI) => {
         const { rejectWithValue } = thunkAPI;
         try {
             const res = await loginApi.login(formVal);
-            return { userData: res.data };
+            //* dispatch res.data to profile reducer;
         } catch (err) {
             return rejectWithValue({ errorMessage: err.response.data.error });
         }
@@ -60,11 +60,8 @@ const loginSlice = createSlice({
             state.isLoggedIn = true;
             state.isFormPending = false;
             state.loginError = "";
-            //* user data for future usage
-            console.log("If loggedin userdata", action.payload);
         });
         builder.addCase(login.rejected, (state, action) => {
-
             state.isLoggedIn = false;
             state.isFormPending = false;
             state.loginError = action.payload?.errorMessage;
