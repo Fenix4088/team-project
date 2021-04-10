@@ -7,6 +7,8 @@ import { profileReducer } from "../pages/Profile/profileReducer";
 import { registrationReducer } from "../pages/Registration/registrationReducer";
 import { configureStore } from "@reduxjs/toolkit";
 import {appReducer} from "../App/AppReducer";
+import {cardsReducer} from "../pages/Cards/cardsReducer";
+import {packsReducer} from "../pages/Packs/packsReducer";
 
 export type AppRootStateT = ReturnType<typeof rootReducer>;
 /*
@@ -22,7 +24,9 @@ const rootReducer = combineReducers({
     newPassword: newPasswordReducer,
     passwordRecover: passwordRecoverReducer,
     profile: profileReducer,
-    registration: registrationReducer
+    registration: registrationReducer,
+    cards: cardsReducer,
+    packs: packsReducer,
 });
 
 export const store = configureStore({

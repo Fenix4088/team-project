@@ -5,5 +5,7 @@ export const routes = {
     notFound: "/404",
     passwordRecover: "/recover",
     newPassword: "/newPassword",
-    presentation: "/presentation"
+    presentation: "/presentation",
+    cards: "/cards",
+    packs: "/packs"
 };

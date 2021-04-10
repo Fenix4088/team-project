@@ -12,6 +12,7 @@ import { login } from "./loginReducer";
 export type LoginFormT = {
     email: string;
     password: string;
+    rememberMe: boolean;
 };
 
 export const Login = () => {

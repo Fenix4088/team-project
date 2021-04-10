@@ -60,10 +60,11 @@ const loginSlice = createSlice({
             state.isLoggedIn = true;
             state.isFormPending = false;
             state.loginError = "";
-            //* user data for future using
+            //* user data for future usage
             console.log("If loggedin userdata", action.payload);
         });
         builder.addCase(login.rejected, (state, action) => {
+
             state.isLoggedIn = false;
             state.isFormPending = false;
             state.loginError = action.payload?.errorMessage;
@@ -75,7 +76,6 @@ const loginSlice = createSlice({
             state.isLoggedIn = false;
         });
         builder.addCase(logout.rejected, (state) => {
-            //TODO: Не понятно как обрабатывать этот catch так как пользователь если залогинен, кнопка скрыта
             state.isFormPending = false;
         });
         builder.addCase(authMe.fulfilled, (state, action) => {
