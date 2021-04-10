@@ -8,7 +8,7 @@ import styled from "styled-components/macro";
 import { useFormik } from "formik";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { login } from "./loginReducer";
-// yehorTest@gmail.com
+// ! for dev =>  yehorTest@gmail.com
 export type LoginFormT = {
     email: string;
     password: string;
