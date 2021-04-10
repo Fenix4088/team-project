@@ -1,12 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import {packsAPI, PacksQueryParamsT, PacksRespT} from "../../API/packsAPI";
+import { packsAPI, PacksQueryParamsT, PacksRespT } from "../../API/packsAPI";
 
 type InitialStateT = {
     packsTableData: PacksRespT;
+    isLoading: boolean;
 };
 
 // * Thunks
-export const getPacks = createAsyncThunk<PacksRespT, PacksQueryParamsT, {rejectValue: any}>(
+export const getPacks = createAsyncThunk<PacksRespT, PacksQueryParamsT, { rejectValue: any }>(
     "packs/requestPacks",
     async (packsData, thunkAPI) => {
         try {
@@ -18,7 +19,15 @@ export const getPacks = createAsyncThunk<PacksRespT, PacksQueryParamsT, {rejectV
 );
 
 const initialState: InitialStateT = {
-    packsTableData: {} as PacksRespT
+    packsTableData: {
+        cardPacks: [],
+        cardPacksTotalCount: 0,
+        maxCardsCount: 0,
+        minCardsCount: 0,
+        page: 0,
+        pageCount: 0
+    },
+    isLoading: false
 };
 
 const packsSlice = createSlice({
@@ -28,7 +37,11 @@ const packsSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(getPacks.fulfilled, (state, action) => {
             state.packsTableData = action.payload;
-        })
+            state.isLoading = false;
+        });
+        builder.addCase(getPacks.pending, (state, action) => {
+            state.isLoading = true;
+        });
     }
 });
 

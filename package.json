@@ -16,6 +16,7 @@
         "@types/react-slider": "^1.1.1",
         "@types/redux": "^3.6.0",
         "@types/styled-components": "^5.1.9",
+        "@types/uuid": "^8.3.0",
         "axios": "^0.21.1",
         "formik": "^2.2.6",
         "polished": "^4.1.1",
