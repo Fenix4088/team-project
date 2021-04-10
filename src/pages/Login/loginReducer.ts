@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { LoginFormT } from "./Login";
 import { loginApi } from "../../API/login";
 import { authMe } from "../../App/AppReducer";
+import { setUserData } from "../Profile/profileReducer";
 
 export type InitialStateT = {
     isLoggedIn: boolean;
@@ -27,10 +28,10 @@ export type UserDataT = {
 export const login = createAsyncThunk<void, LoginFormT, { rejectValue: { errorMessage: string } }>(
     "login/login",
     async (formVal: LoginFormT, thunkAPI) => {
-        const { rejectWithValue } = thunkAPI;
+        const { rejectWithValue, dispatch } = thunkAPI;
         try {
             const res = await loginApi.login(formVal);
-            //* dispatch res.data to profile reducer;
+            dispatch(setUserData(res.data));
         } catch (err) {
             return rejectWithValue({ errorMessage: err.response.data.error });
         }
@@ -76,8 +77,6 @@ const loginSlice = createSlice({
             state.isFormPending = false;
         });
         builder.addCase(authMe.fulfilled, (state, action) => {
-            //* user data for future using
-            console.log("If auth user data: ", action.payload)
             state.isLoggedIn = true;
         });
         builder.addCase(authMe.rejected, (state, action) => {

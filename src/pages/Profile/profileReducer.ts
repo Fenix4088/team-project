@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 type userDataT = {
     avatar?: string
@@ -25,13 +25,17 @@ export const initialState: InitialStateT = {
 const profileSlice = createSlice({
     name: "profile",
     initialState,
-    reducers: {}
+    reducers: {
+        setUserData(state, action: PayloadAction<userDataT>) {
+            state.userData = action.payload;
+        }
+    }
 });
 
 export const profileReducer = profileSlice.reducer;
 
 // * Action creators
 
-export const {} = profileSlice.actions;
+export const {setUserData} = profileSlice.actions;
 
 // * Thunks Creators
