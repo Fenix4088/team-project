@@ -1,13 +1,13 @@
 import { instance } from "./commonAPIData";
-import {AxiosResponse} from "axios";
+import { AxiosResponse } from "axios";
 
 export type PacksQueryParamsT = void | {
-    packName?: string,
-    pageCount?: number,
-    min?: number,
-    max?: number,
-    page?: number
-}
+    packName?: string;
+    pageCount?: number;
+    min?: number;
+    max?: number;
+    page?: number;
+};
 
 export type PacksRespT = {
     cardPacks: Array<PackT>;
@@ -32,14 +32,33 @@ type PackT = {
     updated: string;
     user_id: string;
     user_name: string;
-    _id: string
+    _id: string;
 };
 
 export const packsAPI = {
     async getPacks(packsQueryParams: PacksQueryParamsT) {
-        const res =  await instance.get<PacksRespT, AxiosResponse<PacksRespT>>("cards/pack", {
+        const res = await instance.get<PacksRespT, AxiosResponse<PacksRespT>>("cards/pack", {
             params: packsQueryParams
         });
         return res.data;
+    },
+
+    async addPack(packId: string) {
+        const res = await instance.post("cards/pack", {
+            cardsPack: {
+                name: "new pack 2.0"
+            }
+        });
+        console.log(res);
+    },
+
+    async deletePack(packId: string) {
+        // ! you cant delete not your Pack
+        const res = await instance.delete("cards/pack", {
+            params: {
+                id: packId
+            }
+        });
+        console.log(res);
     }
 };

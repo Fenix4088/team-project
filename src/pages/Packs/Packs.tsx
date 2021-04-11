@@ -5,6 +5,8 @@ import { PacksTable } from "../../components/Main/PacksTable/PacksTable";
 import { Select } from "../../components/common/Select/Select";
 import styled from "styled-components/macro";
 import { Loader } from "../../components/common/Loader/Loader";
+import {packsAPI} from "../../API/packsAPI";
+import {v1} from "uuid";
 
 type SelectValueT = 5 | 10 | 25 | 50 | 100;
 
@@ -15,7 +17,7 @@ export const Packs = () => {
     const [option, setOption] = useState<SelectValueT>(5);
 
     useEffect(() => {
-        dispatch(getPacks({ pageCount: option, page: 5 }));
+        dispatch(getPacks({ pageCount: option}));
     }, [dispatch, option]);
 
     const onChangeOption = (value: SelectValueT) => setOption(+value as SelectValueT);
@@ -26,6 +28,7 @@ export const Packs = () => {
                 {/*TODO: Paginator should be here*/}
                 {/*TODO Filter(slider and search input) should be here (by Mark)*/}
                 <Select options={[5, 10, 25, 50, 100]} value={option} onChangeOption={onChangeOption} />
+                <button onClick={() => packsAPI.addPack(v1())}>+</button>
             </FilterWrapper>
             {isLoading ? <Loader /> : <PacksTable />}
             {/*TODO: Paginator should be here*/}
