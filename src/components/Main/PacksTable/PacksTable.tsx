@@ -1,9 +1,9 @@
-import { useAppSelector } from "../../store/hooks";
 import { v1 } from "uuid";
 import { NavLink } from "react-router-dom";
-import { routes } from "../../router/routes";
+import { routes } from "../../../router/routes";
 import React from "react";
 import styled from "styled-components/macro";
+import {useAppSelector} from "../../../store/hooks";
 
 export const PacksTable = () => {
     const packsData = useAppSelector((state) => state.packs.packsTableData);
