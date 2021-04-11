@@ -4,10 +4,10 @@ import { routes } from "../../../router/routes";
 import React from "react";
 import styled from "styled-components/macro";
 import {useAppSelector} from "../../../store/hooks";
+import {Loader} from "../../common/Loader/Loader";
 
 export const PacksTable = () => {
     const packsData = useAppSelector((state) => state.packs.packsTableData);
-    const isLoading = useAppSelector((state) => state.packs.isLoading);
 
     const formatDate = (date: string): string => {
         return new Date(date).toLocaleDateString("ru", {
@@ -19,20 +19,15 @@ export const PacksTable = () => {
     return (
         <PacksTableWrap>
             <thead>
-                <tr>
+                <TrHeader>
                     <th>Name</th>
                     <th>Cards count</th>
                     <th>Updated</th>
                     <th></th>
-                </tr>
+                </TrHeader>
             </thead>
             <tbody>
-                {isLoading ? (
-                    <tr>
-                        <td>"Loading"</td>
-                    </tr>
-                ) : (
-                    packsData.cardPacks.map((item) => {
+                {packsData.cardPacks.map((item) => {
                         return (
                             <PacksTr key={v1()}>
                                 <Td content={"left"}>{item.name}</Td>
@@ -41,11 +36,11 @@ export const PacksTable = () => {
                                 <Td content={"center"}>
                                     <button>+</button>
                                     <button>del</button>
-                                    <NavLink to={`${routes.cards}${item._id}`}>cards</NavLink>
+                                    <NavLink to={`/cards/${item._id}`}>cards</NavLink>
                                 </Td>
                             </PacksTr>
                         );
-                    })
+                    }
                 )}
             </tbody>
         </PacksTableWrap>
@@ -56,22 +51,30 @@ const PacksTableWrap = styled.table`
     margin: 0 auto;
     border: 1px solid black;
     border-collapse: collapse;
-    width: 80%;
+    width: 100%;
 `;
 
 const PacksTr = styled.tr`
-    td {
-        padding: 10px 5px;
-    }
+  transition: all .2s ease;
 
-    &:nth-child(odd) {
-        background: ${({ theme }) => theme.color.primary.main};
-        opacity: 0.5;
-    }
+  td {
+    padding: 10px 5px;
+  }
 
-    &:hover {
-        background: aliceblue;
-        cursor: pointer;
+  &:nth-child(odd) {
+    background-color: ${({theme}) => theme.color.primary.main};
+  }
+
+
+  &:hover {
+    background: #7e9ee5;
+    cursor: pointer;
+  }
+`;
+
+const TrHeader = styled.tr`
+    th {
+      padding: 10px 0;
     }
 `;
 
