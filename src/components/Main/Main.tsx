@@ -29,8 +29,8 @@ export const Main = () => {
                 <Route exact path={routes.passwordRecover} render={() => <PasswordRecover />} />
                 <Route exact path={routes.newPassword} render={() => <NewPassword />} />
                 <Route exact path={routes.presentation} render={() => <PresentationPage />} />
-                <Route exact path={routes.cards} render={() => <Cards />} />
                 <Route exact path={routes.packs} render={() => <Packs />} />
+                <Route exact path={routes.cards} render={() => <Cards />} />
                 <Route render={() => <NotFound />} />
             </Switch>
         </MainContentWrap>

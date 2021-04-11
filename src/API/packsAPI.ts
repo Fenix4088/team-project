@@ -32,6 +32,7 @@ type PackT = {
     updated: string;
     user_id: string;
     user_name: string;
+    _id: string
 };
 
 export const packsAPI = {
