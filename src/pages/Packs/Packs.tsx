@@ -14,12 +14,14 @@ export const Packs = () => {
         dispatch(getPacks({ pageCount: option, page: 5 }));
     }, [dispatch, option]);
 
-    const onChangeOption = (value: SelectValueT) => setOption(value);
+    const onChangeOption = (value: SelectValueT) => setOption(+value as SelectValueT);
 
     return (
         <>
+            {/*TODO: Paginator should be here*/}
             <Select options={[5, 10, 25, 50, 100]} value={option} onChangeOption={onChangeOption} />
             <PacksTable />
+            {/*TODO: Paginator should be here*/}
         </>
     );
 };

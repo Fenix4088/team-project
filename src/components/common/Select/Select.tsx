@@ -17,7 +17,7 @@ export const Select: React.FC<SuperSelectPropsType> = (
 ) => {
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
         if (onChangeOption) {
-            onChangeOption(+e.currentTarget.value)
+            onChangeOption(e.currentTarget.value)
         }
     }
 
