@@ -5,7 +5,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import { useAppSelector } from "../../../store/hooks";
 import { Loader } from "../../common/Loader/Loader";
-import {packsAPI} from "../../../API/packsAPI";
+import { packsAPI } from "../../../API/packsAPI";
 
 export const PacksTable = () => {
     const packsData = useAppSelector((state) => state.packs.packsTableData);
@@ -31,7 +31,9 @@ export const PacksTable = () => {
                 {packsData.cardPacks.map((item) => {
                     return (
                         <PacksTr key={v1()}>
-                            <Td content={"left"}>{item.name}</Td>
+                            <Td content={"left"} wordBreak={"break-all"} >
+                                {item.name}
+                            </Td>
                             <Td content={"center"}>{item.cardsCount}</Td>
                             <Td content={"center"}>{formatDate(item.updated)}</Td>
                             <Td content={"center"}>
@@ -51,7 +53,6 @@ const PacksTableWrap = styled.table`
     margin: 0 auto;
     border: 1px solid black;
     border-collapse: collapse;
-    width: 100%;
 `;
 
 const PacksTr = styled.tr`
@@ -79,10 +80,13 @@ const TrHeader = styled.tr`
 
 type TdT = {
     content: "left" | "center";
+    wordBreak?: "break-all";
 };
 
 const Td = styled.td<TdT>`
     text-align: ${(props) => props.content};
+    word-break: ${(props) => (props.wordBreak ? props.wordBreak : "normal")};
+    width: 25%;
 
     & > button,
     a {
