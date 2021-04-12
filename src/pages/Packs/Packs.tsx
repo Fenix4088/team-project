@@ -7,12 +7,16 @@ import styled from "styled-components/macro";
 import { Loader } from "../../components/common/Loader/Loader";
 import {packsAPI} from "../../API/packsAPI";
 import {v1} from "uuid";
+import {Redirect} from "react-router-dom";
+import {routes} from "../../router/routes";
 
 type SelectValueT = 5 | 10 | 25 | 50 | 100;
 
 export const Packs = () => {
     const dispatch = useAppDispatch();
     const isLoading = useAppSelector((state) => state.packs.isLoading);
+    const isLoggedIn = useAppSelector((state) => state.login.isLoggedIn);
+
 
     const [option, setOption] = useState<SelectValueT>(5);
 
@@ -21,6 +25,10 @@ export const Packs = () => {
     }, [dispatch, option]);
 
     const onChangeOption = (value: SelectValueT) => setOption(+value as SelectValueT);
+
+    if (!isLoggedIn) {
+        return <Redirect to={routes.login} />;
+    }
 
     return (
         <>

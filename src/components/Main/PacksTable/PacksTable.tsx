@@ -31,7 +31,7 @@ export const PacksTable = () => {
                 {packsData.cardPacks.map((item) => {
                     return (
                         <PacksTr key={v1()}>
-                            <Td content={"left"} wordBreak={"break-all"} >
+                            <Td content={"left"} wordBreak={"break-all"}>
                                 {item.name}
                             </Td>
                             <Td content={"center"}>{item.cardsCount}</Td>
@@ -50,6 +50,7 @@ export const PacksTable = () => {
 };
 
 const PacksTableWrap = styled.table`
+    width: 100%;
     margin: 0 auto;
     border: 1px solid black;
     border-collapse: collapse;
