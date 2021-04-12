@@ -18,7 +18,7 @@ export type PacksRespT = {
     pageCount: number;
 };
 
-type PackT = {
+export type PackT = {
     cardsCount: number;
     created: string;
     grade: number;
@@ -35,21 +35,28 @@ type PackT = {
     _id: string;
 };
 
+export type NewPackT = {
+    name: string;
+    grade?: number;
+    shots?: number;
+    rating?: number;
+    deckCover?: string;
+    private?: boolean;
+};
+
 export const packsAPI = {
     async getPacks(packsQueryParams: PacksQueryParamsT) {
-        const res = await instance.get<PacksRespT, AxiosResponse<PacksRespT>>("cards/pack", {
+        const res = await instance.get<PacksRespT>("cards/pack", {
             params: packsQueryParams
         });
         return res.data;
     },
 
-    async addPack(packId: string) {
-        const res = await instance.post("cards/pack", {
-            cardsPack: {
-                name: "new pack 2.0"
-            }
+    async addPack(newPackData: NewPackT) {
+        const res = await instance.post<{ newCardsPack: PackT }>("cards/pack", {
+            cardsPack: newPackData
         });
-        console.log(res);
+        return res.data;
     },
 
     async deletePack(packId: string) {

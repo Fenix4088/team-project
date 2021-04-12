@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { packsAPI, PacksQueryParamsT, PacksRespT } from "../../API/packsAPI";
+import {NewPackT, packsAPI, PacksQueryParamsT, PacksRespT, PackT} from "../../API/packsAPI";
 
 type InitialStateT = {
     packsTableData: PacksRespT;
@@ -7,16 +7,27 @@ type InitialStateT = {
 };
 
 // * Thunks
-export const getPacks = createAsyncThunk<PacksRespT, PacksQueryParamsT, { rejectValue: any }>(
+export const getPacks = createAsyncThunk<PacksRespT, PacksQueryParamsT, { rejectValue: string }>(
     "packs/requestPacks",
     async (packsData, thunkAPI) => {
         try {
             return await packsAPI.getPacks(packsData);
         } catch (err) {
-            return thunkAPI.rejectWithValue("");
+            // TODO: error message for user, based on this message txt
+            return thunkAPI.rejectWithValue(err.message);
         }
     }
 );
+
+export const addNewPack = createAsyncThunk<PackT, NewPackT, { rejectValue: string }>("packs/addNewPack", async (newPackData, thunkAPI) => {
+    try {
+        const res =  await packsAPI.addPack(newPackData);
+        return res.newCardsPack;
+    } catch(err) {
+        // TODO: error message for user, based on this message txt
+        return thunkAPI.rejectWithValue(err.message)
+    }
+})
 
 const initialState: InitialStateT = {
     packsTableData: {
@@ -42,6 +53,14 @@ const packsSlice = createSlice({
         builder.addCase(getPacks.pending, (state, action) => {
             state.isLoading = true;
         });
+        builder.addCase(addNewPack.fulfilled, (state, action) => {
+            state.packsTableData.cardPacks.unshift(action.payload);
+            state.isLoading = false;
+        });
+        builder.addCase(addNewPack.pending, (state, action) => {
+            state.isLoading = true;
+        });
+
     }
 });
 
