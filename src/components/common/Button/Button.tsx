@@ -16,7 +16,7 @@ const StyledButton = styled.button<StyledComponentProps<any, ThemeType, any, any
   border: none;
   border-radius: 3px;
   cursor: ${({ disabled }) => disabled ? "default" : "pointer"};
-  background-color: ${({ theme, disabled }) => disabled ? theme.color.grey["400"] : theme.color.primary.main};
+  background-color: ${({ theme, disabled }) => disabled ? theme.color.grey["300"] : theme.color.primary.main};
   color: ${({ theme, disabled }) => disabled ? theme.color.black : theme.color.white};
   padding: 0.5rem 1rem;
   

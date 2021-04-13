@@ -3,8 +3,12 @@ import { Container } from "../../components/layout/Container";
 import { Loader } from "../../components/common/Loader/Loader";
 import styled from "styled-components/macro";
 import { Button } from "../../components/common/Button/Button";
+import { PaginationDemo } from "../../components/common/Pagination/PaginationDemo";
 
 export const PresentationPage = (props: any) => {
+
+
+
     return (
         <>
             <StyledContainer>
@@ -17,6 +21,9 @@ export const PresentationPage = (props: any) => {
                     </PresentationCard>
                     <PresentationCard>
                         <Button disabled>Disabled</Button>
+                    </PresentationCard>
+                    <PresentationCard>
+                        <PaginationDemo/>
                     </PresentationCard>
                 </CardsWrapper>
             </StyledContainer>

@@ -23,12 +23,12 @@ export const Packs = () => {
     return (
         <>
             <FilterWrapper>
-                {/*TODO: Paginator should be here*/}
+                {/*TODO: Pagination should be here*/}
                 {/*TODO Filter(slider and search input) should be here (by Mark)*/}
                 <Select options={[5, 10, 25, 50, 100]} value={option} onChangeOption={onChangeOption} />
             </FilterWrapper>
             {isLoading ? <Loader /> : <PacksTable />}
-            {/*TODO: Paginator should be here*/}
+            {/*TODO: Pagination should be here*/}
         </>
     );
 };
