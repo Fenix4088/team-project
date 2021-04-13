@@ -1,19 +1,41 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
-export type InitialStateT = any;
+type userDataT = {
+    avatar?: string
+    created: string
+    email: string
+    isAdmin: boolean
+    name: string
+    publicCardPacksCount: number
+    rememberMe: boolean
+    token: string
+    tokenDeathTime: number
+    updated: string
+    verified: boolean
+}
 
-export const initialState: InitialStateT = {};
+export type InitialStateT = {
+    userData: userDataT;
+};
+
+export const initialState: InitialStateT = {
+    userData: {} as userDataT,
+};
 
 const profileSlice = createSlice({
     name: "profile",
     initialState,
-    reducers: {}
+    reducers: {
+        setUserData(state, action: PayloadAction<userDataT>) {
+            state.userData = action.payload;
+        }
+    }
 });
 
 export const profileReducer = profileSlice.reducer;
 
 // * Action creators
 
-export const {} = profileSlice.actions;
+export const {setUserData} = profileSlice.actions;
 
 // * Thunks Creators

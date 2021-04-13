@@ -8,10 +8,11 @@ import styled from "styled-components/macro";
 import { useFormik } from "formik";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { login } from "./loginReducer";
-// yehorTest@gmail.com
+// ! for dev =>  yehorTest@gmail.com
 export type LoginFormT = {
     email: string;
     password: string;
+    rememberMe: boolean;
 };
 
 export const Login = () => {
@@ -42,8 +43,8 @@ export const Login = () => {
 
     const formik = useFormik({
         initialValues: {
-            email: "",
-            password: "",
+            email: "" || "yehorTest@gmail.com",
+            password: "" || "yehorTest@gmail.com",
             rememberMe: false
         },
         validate,

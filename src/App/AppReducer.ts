@@ -1,18 +1,21 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { appAPI } from "../API/appApi";
 import { UserDataT } from "../pages/Login/loginReducer";
+import { setUserData } from "../pages/Profile/profileReducer";
 
 export type InitialStateT = any;
 
 //* Thunks
-export const authMe = createAsyncThunk<{ userData: UserDataT }, void, { rejectValue: string }>(
+export const authMe = createAsyncThunk<void, void, { rejectValue: string }>(
     "app/me",
     async (_, thunkAPI) => {
+        const { dispatch, rejectWithValue } = thunkAPI;
         try {
             const res = await appAPI.me();
-            return { userData: res.data };
+            console.log(res.data)
+            dispatch(setUserData(res.data));
         } catch (err) {
-            return thunkAPI.rejectWithValue(err.response.data.error);
+            return rejectWithValue(err.response.data.error);
         }
     }
 );

@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { LoginFormT } from "./Login";
 import { loginApi } from "../../API/login";
 import { authMe } from "../../App/AppReducer";
+import { setUserData } from "../Profile/profileReducer";
 
 export type InitialStateT = {
     isLoggedIn: boolean;
@@ -24,13 +25,13 @@ export type UserDataT = {
 
 // * Thunks
 
-export const login = createAsyncThunk<{ userData: UserDataT }, LoginFormT, { rejectValue: { errorMessage: string } }>(
+export const login = createAsyncThunk<void, LoginFormT, { rejectValue: { errorMessage: string } }>(
     "login/login",
-    async (formVal: LoginFormT, thunkAPI) => {
-        const { rejectWithValue } = thunkAPI;
+    async (formVal, thunkAPI) => {
+        const { rejectWithValue, dispatch } = thunkAPI;
         try {
             const res = await loginApi.login(formVal);
-            return { userData: res.data };
+            dispatch(setUserData(res.data));
         } catch (err) {
             return rejectWithValue({ errorMessage: err.response.data.error });
         }
@@ -60,8 +61,6 @@ const loginSlice = createSlice({
             state.isLoggedIn = true;
             state.isFormPending = false;
             state.loginError = "";
-            //* user data for future using
-            console.log("If loggedin userdata", action.payload);
         });
         builder.addCase(login.rejected, (state, action) => {
             state.isLoggedIn = false;
@@ -75,12 +74,9 @@ const loginSlice = createSlice({
             state.isLoggedIn = false;
         });
         builder.addCase(logout.rejected, (state) => {
-            //TODO: Не понятно как обрабатывать этот catch так как пользователь если залогинен, кнопка скрыта
             state.isFormPending = false;
         });
         builder.addCase(authMe.fulfilled, (state, action) => {
-            //* user data for future using
-            console.log("If auth user data: ", action.payload)
             state.isLoggedIn = true;
         });
         builder.addCase(authMe.rejected, (state, action) => {
