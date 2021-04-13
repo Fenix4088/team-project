@@ -58,6 +58,7 @@ export const theme = {
         1: '2px 2px 5px rgba(0,0,0,0.2)',
         2: '2px 2px 6px rgba(0,0,0,0.2)',
         3: '2px 2px 7px rgba(0,0,0,0.2)',
+        4: '3px 3px 8px rgba(0,0,0,0.5)',
     },
     effect: {
         glow: `drop-shadow(0px 0px 5px ${primaryColor})`

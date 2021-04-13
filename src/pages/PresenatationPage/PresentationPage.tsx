@@ -2,6 +2,7 @@ import React from "react";
 import { Container } from "../../components/layout/Container";
 import { Loader } from "../../components/common/Loader/Loader";
 import styled from "styled-components/macro";
+import { Button } from "../../components/common/Button/Button";
 
 export const PresentationPage = (props: any) => {
     return (
@@ -10,6 +11,12 @@ export const PresentationPage = (props: any) => {
                 <CardsWrapper>
                     <PresentationCard>
                         <Loader/>
+                    </PresentationCard>
+                    <PresentationCard>
+                        <Button>Enabled</Button>
+                    </PresentationCard>
+                    <PresentationCard>
+                        <Button disabled>Disabled</Button>
                     </PresentationCard>
                 </CardsWrapper>
             </StyledContainer>

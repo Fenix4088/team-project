@@ -14,15 +14,26 @@ export const Button: React.FC<PropsType> = ({ ...restProps }) => {
 // Styles
 const StyledButton = styled.button<StyledComponentProps<any, ThemeType, any, any>>`
   border: none;
-  cursor: pointer;
-  background-color: ${({ theme }) => theme.color.primary.main};
-  color: ${({ theme }) => theme.color.white};
+  border-radius: 3px;
+  cursor: ${({ disabled }) => disabled ? "default" : "pointer"};
+  background-color: ${({ theme, disabled }) => disabled ? theme.color.grey["400"] : theme.color.primary.main};
+  color: ${({ theme, disabled }) => disabled ? theme.color.black : theme.color.white};
   padding: 0.5rem 1rem;
+  
+  box-shadow: ${({ theme }) => theme.shadow['1']};
 
   font-family: ${({ theme }) => theme.font.family.default}; // Make a default font actually default
   font-size: ${({ theme }) => theme.font.size.default}; // Default font size
+  
+  transition: all .1s ease-in-out;
 
   &:hover {
-    background-color: ${({ theme }) => theme.color.primary.light};
+    background-color: ${({ theme, disabled }) => disabled ? 'none' : theme.color.primary.dark};
+    transform: ${({ disabled }) => disabled ? 'none' : 'translateY(-0.1em)'};
+    box-shadow: ${({ theme }) => theme.shadow['4']};
+  }
+  
+  &:active {
+    background-color: ${({ theme, disabled }) => disabled ? 'none' : theme.color.primary.light};
   }
 `;
