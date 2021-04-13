@@ -30,10 +30,12 @@ const StyledButton = styled.button<StyledComponentProps<any, ThemeType, any, any
   &:hover {
     background-color: ${({ theme, disabled }) => disabled ? 'none' : theme.color.primary.dark};
     transform: ${({ disabled }) => disabled ? 'none' : 'translateY(-0.1em)'};
-    box-shadow: ${({ theme }) => theme.shadow['4']};
+    box-shadow: ${({ theme, disabled }) => disabled ? theme.shadow['1'] : theme.shadow['4']};
   }
   
   &:active {
     background-color: ${({ theme, disabled }) => disabled ? 'none' : theme.color.primary.light};
+    transform: ${({ disabled }) => disabled ? 'none' : 'translateY(0)'};
+    box-shadow: ${({ theme, disabled }) => disabled ? theme.shadow['1'] : theme.shadow['1']};
   }
 `;
