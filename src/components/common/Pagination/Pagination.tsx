@@ -1,12 +1,13 @@
 import React, {useState} from "react";
 import { Button } from "../Button/Button";
 import styled, { StyledComponentProps } from "styled-components/macro";
+import { SelectValueT } from "../../../pages/Packs/Packs";
 
 type PropsType = {
     pageSize: number
     totalItemsCount: number
     currentPage: number
-    changePage: (pageNumber: number) => void
+    changePage: (pageNumber: number | SelectValueT) => void
     portionSize: number
 }
 
