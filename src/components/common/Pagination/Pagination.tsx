@@ -49,7 +49,8 @@ export const Pagination: React.FC<PropsType> = (props) => {
             <Button onClick={() => {setPortionNumber(portionNumber - 1)}} disabled={disablePrevButton()}>PREV</Button>
                 {pages
                     .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
-                    .map(p => <PageNumberButton currentPage={currentPage}
+                    .map(p => <PageNumberButton key={p}
+                                                currentPage={currentPage}
                                                 pageNumber={p}
                                                 onClick={() => {changePage(p)}}>{p}</PageNumberButton>)}
             <Button onClick={() => {setPortionNumber(portionNumber + 1)}} disabled={disableNextButton()}>NEXT</Button>

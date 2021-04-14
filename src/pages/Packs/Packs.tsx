@@ -6,6 +6,7 @@ import { Select } from "../../components/common/Select/Select";
 import styled from "styled-components/macro";
 import { Loader } from "../../components/common/Loader/Loader";
 import { Pagination } from "../../components/common/Pagination/Pagination";
+import { InputText } from "../../components/common/InputText/InputText";
 
 export type SelectValueT = 5 | 10 | 25 | 50 | 100;
 
@@ -14,11 +15,9 @@ export const Packs = () => {
     const isLoading = useAppSelector((state) => state.packs.isLoading);
     const packsData = useAppSelector((state) => state.packs.packsTableData);
 
-    const changePageHandler = (pageNumber: number) => {
-        dispatch(getPacks({ pageCount: option, page: pageNumber }));
-    };
-
     const [option, setOption] = useState<SelectValueT>(5);
+
+
 
     useEffect(() => {
         dispatch(getPacks({ pageCount: option, page: packsData.page }));
@@ -26,22 +25,28 @@ export const Packs = () => {
 
     const onChangeOption = (value: SelectValueT) => setOption(+value as SelectValueT);
 
+    const changePageHandler = (pageNumber: number) => {
+        dispatch(getPacks({ pageCount: option, page: pageNumber }));
+    };
+
+    const changePacksNameFilter = (nameFilter: string) => {
+        dispatch(getPacks({ pageCount: option, packName: nameFilter }));
+    };
+
     return (
         <>
             <FilterWrapper>
-                <Pagination totalItemsCount={packsData.cardPacksTotalCount}
-                            currentPage={packsData.page}
-                            portionSize={10}
-                            pageSize={option}
-                            changePage={changePageHandler} />
-                {packsData.page}
-                {/*TODO Filter(slider and search input) should be here (by Mark)*/}
+                <InputText placeholder={"Name"} onChangeText={changePacksNameFilter}/>
                 <Select options={[5, 10, 25, 50, 100]}
                         value={option}
                         onChangeOption={onChangeOption} />
             </FilterWrapper>
             {isLoading ? <Loader /> : <PacksTable />}
-            {/*TODO: Pagination should be here*/}
+            <Pagination totalItemsCount={packsData.cardPacksTotalCount}
+                        currentPage={packsData.page}
+                        portionSize={10}
+                        pageSize={option}
+                        changePage={changePageHandler} />
         </>
     );
 };

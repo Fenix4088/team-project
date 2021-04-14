@@ -4,6 +4,7 @@ import { Loader } from "../../components/common/Loader/Loader";
 import styled from "styled-components/macro";
 import { Button } from "../../components/common/Button/Button";
 import { PaginationDemo } from "../../components/common/Pagination/PaginationDemo";
+import { FilterDemo } from "../../components/common/Filter/FilterDemo";
 
 export const PresentationPage = (props: any) => {
 
@@ -16,14 +17,21 @@ export const PresentationPage = (props: any) => {
                     <PresentationCard>
                         <Loader/>
                     </PresentationCard>
+
                     <PresentationCard>
                         <Button>Enabled</Button>
                     </PresentationCard>
+
                     <PresentationCard>
                         <Button disabled>Disabled</Button>
                     </PresentationCard>
+
                     <PresentationCard>
                         <PaginationDemo/>
+                    </PresentationCard>
+
+                    <PresentationCard>
+                        <FilterDemo/>
                     </PresentationCard>
                 </CardsWrapper>
             </StyledContainer>

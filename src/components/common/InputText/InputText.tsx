@@ -25,7 +25,7 @@ export const InputText: React.FC<SuperInputTextPropsType> = ({
 }) => {
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
         onChange && // если есть пропс onChange
-            onChange(e); // то передать ему е (поскольку onChange не обязателен)
+        onChange(e); // то передать ему е (поскольку onChange не обязателен)
 
         onChangeText && onChangeText(e.currentTarget.value);
     };
